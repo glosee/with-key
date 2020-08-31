@@ -9,5 +9,6 @@ module.exports = {
 		'!*.config.js',
 		'!**/coverage/**',
 		'!src/index.js',
+		'!dist/',
 	],
 };
