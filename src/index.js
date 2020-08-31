@@ -1,1 +1,2 @@
-export withKey from './with-key';
+import withKey from './with-key';
+export default withKey;
