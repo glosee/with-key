@@ -5,6 +5,7 @@
 	"main": "dist/index.cjs.js",
 	"scripts": {
 		"test": "jest",
+		"test:ci": "jest --collectCoverage",
 		"prettier": "prettier --write src/**/*.js",
 		"build": "rollup -c",
 		"prepublish": "npm run build"
