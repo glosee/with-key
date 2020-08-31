@@ -1,6 +1,6 @@
 {
 	"name": "with-key",
-	"version": "0.0.0",
+	"version": "0.0.1",
 	"description": "Stupid simple object composition through function currying",
 	"main": "dist/index.cjs.js",
 	"scripts": {
