@@ -9,15 +9,28 @@ jobs:
     name: 'Unit Test'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2 # Checkout the repository
-      - uses: actions/cache@v2 # Setup cache for node_modules
+      # Checkout the repository
+      - uses: actions/checkout@v2
+
+      # Setup cache for node_modules
+      - uses: actions/cache@v2
         with:
           path: ~/.npm
           key: ${{ runner.os }}-node-${{ hashFiles('./package-lock.json') }}
           restore-keys: ${{ runner.os }}-node-
-      - name: 'Install dependencies' # Install node_modules
+
+      # Install node_modules
+      - name: 'Install dependencies'
         run: npm ci
-      - name: 'Run unit tests' # Run the actual tests
-        run: npm test
-        env:
-          COVERAGE: 1
+
+      # Run the tests
+      - name: 'Run unit tests'
+        run: npm run test:ci
+
+      # Display the coverage on the MR
+      - uses: romeovs/lcov-reporter-action@v0.2.16
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          lcov-file: ./coverage/lcov.info
+          # Only do this on PRs, as it should only post a comment on open PRs
+          if: ${{ github.event_name == 'pull_request' }}
