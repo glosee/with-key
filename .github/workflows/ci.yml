@@ -12,11 +12,11 @@ jobs:
       - uses: actions/checkout@v2
 
       # Setup cache for node_modules
-      - uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('./package-lock.json') }}
-          restore-keys: ${{ runner.os }}-node-
+      # - uses: actions/cache@v2
+      #   with:
+      #     path: ~/.npm
+      #     key: ${{ runner.os }}-node-${{ hashFiles('./package-lock.json') }}
+      #     restore-keys: ${{ runner.os }}-node-
 
       # Install node_modules
       - name: 'Install dependencies'
@@ -30,6 +30,6 @@ jobs:
       - uses: romeovs/lcov-reporter-action@v0.2.16
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          lcov-file: ./coverage/lcov.info
+          # lcov-file: ./coverage/lcov.info
         # Only do this on PRs, as it should only post a comment on open PRs
-        if: ${{ github.event_name == 'pull_request' }}
+        # if: ${{ github.event_name == 'pull_request' }}
