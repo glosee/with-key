@@ -31,5 +31,5 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           lcov-file: ./coverage/lcov.info
-          # Only do this on PRs, as it should only post a comment on open PRs
-          if: ${{ github.event_name == 'pull_request' }}
+        # Only do this on PRs, as it should only post a comment on open PRs
+        if: ${{ github.event_name == 'pull_request' }}
